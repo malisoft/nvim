@@ -1,0 +1,12 @@
+{
+  "css": {
+		"filters": "css",
+		"profile": "css",
+		"snippets": {
+			"@i": "@import url(|);"
+		}
+	  }
+
+
+	  
+}
