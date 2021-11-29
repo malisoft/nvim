@@ -12,7 +12,6 @@ set rnu
 set laststatus=2
 
 call plug#begin('~/.vim/plugged')
-
 "Themes
 Plug 'morhetz/gruvbox'
 
@@ -27,7 +26,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lilydjwg/colorizer'
-"Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
+"Plug 'yuezk/vim-js'
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 "code modification
 Plug 'scrooloose/nerdcommenter'
@@ -38,10 +45,13 @@ Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release','do':'yarn install'}
 
-Plug 'jwalton512/vim-blade'
+"for javacript
+Plug 'jelera/vim-javascript-syntax'
+
 "for blade autocompletation
+Plug 'jwalton512/vim-blade'
 Plug 'yaegassy/coc-blade-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-blade-formatter', {'do': 'npm install --ignore-scripts --no-lockfile --production --legacy-peer-deps.'}
+
 call plug#end()
 "Use F5 to refresh your editor with the config file that you specify here
 nmap <F5> :source ~/.config/nvim/init.vim<CR>
@@ -49,10 +59,6 @@ vmap <F5> :source ~/.config/nvim/init.vim<CR>
 
 let mapleader=" "
 
-"for autoformat vim prettier
-augroup autoformat_settings
-    autocmd Filetype javascript prettier
-augroup END
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -69,6 +75,7 @@ nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>nt :NERDTreeFind<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
+nmap <Leader>e :bdelete<CR>
 nmap <Leader>wq :wq<CR>
 nmap <Leader>nw :q!<CR>
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
@@ -107,6 +114,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 "for coc.vim configurations
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 let g:coc_config_file="$HOME/.config/nvim/coc-settings.json"
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -139,3 +147,24 @@ endfunction
 "to put tabulation in selection with visual mode
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+" File types "{{{
+" ---------------------------------------------------------------------
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
+
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
