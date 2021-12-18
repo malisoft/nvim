@@ -13,10 +13,12 @@ set laststatus=2
 
 call plug#begin('~/.vim/plugged')
 "Themes
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'rafi/awesome-vim-colorschemes'
 
 "Functions like an Ide
 Plug 'easymotion/vim-easymotion'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -27,9 +29,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lilydjwg/colorizer'
 Plug 'leafgarland/typescript-vim'
-"Plug 'yuezk/vim-js'
-Plug 'pangloss/vim-javascript'
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+"Plug 'HerringtonDarkholme/yats.vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -44,9 +46,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release','do':'yarn install'}
-
-"for javacript
-Plug 'jelera/vim-javascript-syntax'
 
 "for blade autocompletation
 Plug 'jwalton512/vim-blade'
@@ -63,12 +62,31 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 "to change autogenerator code html for emmet
-"let g:user_emmet_leader_key='<Leader>z'
 let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.config/nvim/snippets_custom.json')), "\n"))
 
-colorscheme gruvbox
-let g:gruvbox_constrast_dark="hard"
+"for the theme
+"colorscheme gruvbox
+"let g:gruvbox_constrast_dark="hard"
+set background=dark
+set termguicolors
+"colorscheme lucid
+"colorscheme dogrun
+colorscheme sonokai
+"colorscheme oceanic_material
+"colorscheme gotham
+"colorscheme challenger_deep
+
+let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
 let NERDTreeQuitOnOpen=1
 
 nmap <Leader>s <Plug>(easymotion-s2)
@@ -124,7 +142,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Use <c-space> to trigger completion.
+nmap <silent> rn <Plug>(coc-rename)
+
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
