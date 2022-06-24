@@ -1,5 +1,4 @@
-{	
-	"snippets.loadFromExtensions": true,  
-	"coc.preferences.formatOnSaveFiletypes": ["css", "markdown"]	
+{
+  "snippets.loadFromExtensions": true,
+  "coc.preferences.formatOnSaveFiletypes": ["css"]
 }
-
