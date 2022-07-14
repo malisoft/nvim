@@ -13,6 +13,13 @@ set laststatus=2
 set undodir=~/.nvim/undo/backup
 set undofile
 
+" show existing tab with 4 spaces width
+set tabstop=2
+" when indenting with '>', use 4 spaces width
+set shiftwidth=2
+" On pressing tab, insert 4 spaces
+set expandtab
+
 call plug#begin('~/.nvim/plugged')
 "file management
 Plug 'junegunn/fzf.vim'
@@ -61,6 +68,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release','do':'yarn install'}
 
 "for blade autocompletation
 Plug 'jwalton512/vim-blade'
+"Plug 'dense-analysis/ale'
+"Plug 'stephpy/vim-php-cs-fixer' "for correct the code in php to a standar
 
 "for flutter
 Plug 'dart-lang/dart-vim-plugin'
@@ -76,6 +85,8 @@ Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'ianks/vim-tsx'
 
+"git line changes
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
@@ -92,13 +103,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
-
-
-
-
-
-
-
 
 
 
@@ -181,6 +185,7 @@ nnoremap <leader>j :bprevious<CR>
 
 "to open a terminal in a new tab
 nnoremap <c-t> :split<CR>:ter<CR>
+
 " Vim devicons
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
@@ -204,7 +209,7 @@ let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsEditSplit="vertical"
 
 "for coc.vim configurations
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-flutter', 'coc-python', 'coc-emmet', 'coc-prettier']  " list of CoC extensions needed
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-flutter', 'coc-python', 'coc-emmet', 'coc-prettier', 'coc-vetur', 'coc-blade']  " list of CoC extensions needed
 let g:coc_config_file="$HOME/.config/nvim/coc-settings.json"
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
