@@ -53,7 +53,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'leafgarland/typescript-vim'
 Plug 'jelera/vim-javascript-syntax'
 
-
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -64,6 +63,7 @@ Plug 'yaegassy/coc-blade-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
+Plug 'leafOfTree/vim-matchtag'
 Plug 'neoclide/coc.nvim', {'branch': 'release','do':'yarn install'}
 
 "for blade autocompletation
@@ -104,10 +104,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 
-
-
-
-
 " none X terminal
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
@@ -144,6 +140,10 @@ colorscheme sonokai
 "colorscheme gotham
 "colorscheme challenger_deep
 
+"fot tmux
+"let g:tmuxline_theme = 'zenburn'
+
+"configuring NERDTree
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
@@ -209,7 +209,7 @@ let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsEditSplit="vertical"
 
 "for coc.vim configurations
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-flutter', 'coc-python', 'coc-emmet', 'coc-prettier', 'coc-vetur', 'coc-blade']  " list of CoC extensions needed
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-flutter', 'coc-python', 'coc-emmet', 'coc-prettier', 'coc-vetur', 'coc-blade', 'coc-phpls', 'coc-diagnostic']  " list of CoC extensions needed
 let g:coc_config_file="$HOME/.config/nvim/coc-settings.json"
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -289,3 +289,6 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+" for matchtag
+let g:vim_matchtag_enable_by_default = 1
+let g:vim_matchtag_files = '*.html,*.xml,*.js,*.jsx,*.ts,*.tsx,*.vue,*.svelte,*.jsp,*.php,*.erb'
