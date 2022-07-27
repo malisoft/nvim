@@ -1,3 +1,10 @@
 require('settings')
+require('keymaps')
 require('plugins/packer')
 require('plugins/neo-tree')
+require('plugins/ayu')
+require('plugins/sidebar-nvim')
+require('plugins/indent-blankline')
+require('plugins/nvim-treesitter')
+require('plugins/nvim-autopairs')
+

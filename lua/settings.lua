@@ -43,42 +43,6 @@ g.neovide_cursor_vfx_mode = "railgun"
 opt.list = true
 opt.listchars = 'tab:▸ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»'
 
--- set spell
--- exec ([[
---   setlocal spell spelllang=es
---   set spell
---   ]], false)
-exec ([[
-    augroup markdownSpell
-        autocmd!
-        autocmd FileType markdown setlocal spell spelllang=es
-        autocmd BufRead,BufNewFile *.md setlocal spell spelllang=es
-    augroup END
-  ]], false)
-
--- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]
-
--- highlight on yank
-exec([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-  augroup end
-]], false)
-
--- templates
-exec([[
-  augroup templates
-      au!
-      let g:template_name = 'Lorenzo Carbonell <a.k.a. atareao>'
-      autocmd BufNewFile *.* silent! execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tpl'
-      autocmd BufNewFile * %s/{{YEAR}}/\=strftime('%Y')/ge
-      autocmd BufNewFile * %s/{{NAME}}/\=template_name/ge
-      autocmd BufNewFile * %s/{{EVAL\s*\([^}]*\)}}/\=eval(submatch(1))/ge
-  augroup END
-]], false)
-
 -- autoexec
 exec([[
   augroup execute
@@ -119,15 +83,6 @@ cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=0]]
 -- IndentLine
 --g.indentLine_setColors = 0  -- set indentLine color
 g.indentLine_char = '|'       -- set indentLine character
-
--- disable IndentLine for markdown files (avoid concealing)
-cmd [[autocmd FileType markdown let g:indentLine_enabled=0]]
-
------------------------------------------------------------
--- Autocompletion
------------------------------------------------------------
--- Not used here, option defined on /plugins/nvim-cmp.lua
---opt.completeopt = 'menuone,noselect,noinsert'
 
 -----------------------------------------------------------
 -- Terminal

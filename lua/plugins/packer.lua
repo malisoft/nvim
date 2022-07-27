@@ -24,6 +24,49 @@ return require('packer').startup(function(use)
       "MunifTanjim/nui.nvim"
     },
   }
+
+  use {
+      'phaazon/hop.nvim',
+      branch = 'v2', -- optional but strongly recommended
+      config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      end
+  }
+
+  -- side bar in the  footer
+  use 'sidebar-nvim/sidebar.nvim'
+
+  -- indent line
+  use 'lukas-reineke/indent-blankline.nvim'
+
+  -- colorschemes
+  use 'Shatur/neovim-ayu'
+  --use 'navarasu/onedark.nvim'
+
+
+  -- autopair
+  use 'windwp/nvim-autopairs'
+
+  -- treesitter interface
+  use 'nvim-treesitter/nvim-treesitter'
+  --use 'nvim-treesitter/nvim-tree-docs'
+  --use 'p00f/nvim-ts-rainbow'
+
+
+
+  -- autocomplete
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'f3fora/cmp-spell',
+      'saadparwaiz1/cmp_luasnip',
+    },
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
