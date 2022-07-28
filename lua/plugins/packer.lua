@@ -53,8 +53,48 @@ return require('packer').startup(function(use)
   --use 'nvim-treesitter/nvim-tree-docs'
   --use 'p00f/nvim-ts-rainbow'
 
+-- neogen
+use {
+    "danymat/neogen",
+    requires = "nvim-treesitter/nvim-treesitter",
+}
 
 
+  -- tabs
+  --use {
+  --  'nanozuki/tabby.nvim',
+  --  requires = { 'kyazdani42/nvim-web-devicons' },
+  --}
+
+
+  -- tagviewer
+  use 'liuchengxu/vista.vim'
+
+
+
+  -- fuzzy finder
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-ui-select.nvim'
+  use 'nvim-telescope/telescope-symbols.nvim'
+  use 'nvim-telescope/telescope-media-files.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'ibhagwan/fzf-lua'
+
+-- Lua
+use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
   -- autocomplete
   use {
     'hrsh7th/nvim-cmp',
@@ -67,6 +107,13 @@ return require('packer').startup(function(use)
       'saadparwaiz1/cmp_luasnip',
     },
   }
+  use {'tzachar/cmp-tabnine',
+     run='./install.sh',
+     requires = 'hrsh7th/nvim-cmp'
+  }
+
+
+  use {'onsails/lspkind-nvim'}
   if packer_bootstrap then
     require('packer').sync()
   end
