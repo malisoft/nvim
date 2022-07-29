@@ -3,8 +3,10 @@
 -----------------------------------------------------------
 
 -- Plugin: nvim-treesitter
---- https://github.com/nvim-treesitter/nvim-treesitter
+-- https://github.com/nvim-treesitter/nvim-treesitter
 require('nvim-treesitter.configs').setup {
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = { "php" },

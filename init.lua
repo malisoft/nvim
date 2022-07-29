@@ -7,12 +7,17 @@ require('plugins/sidebar-nvim')
 require('plugins/indent-blankline')
 require('plugins/luasnip')
 require('plugins/neogen')
-require('plugins/vista')                 -- tag viewer
 
---require('plugins/telescope-nvim')
+--File finder
+require('plugins/telescope-nvim')
 
+--A pretty list for showing lsp diagnostics
 require('plugins/trouble')
 
+--Document jumper
+require('plugins/hop')
+
+--Highlighting Document
 require('plugins/nvim-treesitter')
 require('plugins/nvim-autopairs')
 require('plugins/nvim-cmp')
