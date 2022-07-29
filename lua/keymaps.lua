@@ -65,8 +65,10 @@ map("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 
 
 -- Neogen
+-- to generate better annotations ->:Neogen func|class|type|...
 map("n", "<leader>ng", ":lua require('neogen').generate()<CR>", { noremap = true })
 
 -- Hop
+-- allows jump in a document
 map("n", "<leader>sk", ":HopWord<CR>", { noremap = true })
 

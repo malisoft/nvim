@@ -6,6 +6,7 @@ require('plugins/ayu')
 require('plugins/sidebar-nvim')
 require('plugins/indent-blankline')
 require('plugins/luasnip')
+
 require('plugins/neogen')
 
 --File finder
@@ -19,6 +20,8 @@ require('plugins/hop')
 
 --Highlighting Document
 require('plugins/nvim-treesitter')
+
+--Exelent to type [] {} and close it
 require('plugins/nvim-autopairs')
 require('plugins/nvim-cmp')
 require('plugins/nvim-tabnine')

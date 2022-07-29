@@ -5,15 +5,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-
   use 'wbthomason/packer.nvim'
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
 
-  -- file explorer
+  -- FILE NAVIGATION
   --use 'kyazdani42/nvim-tree.lua'
   use {
       'nvim-neo-tree/neo-tree.nvim',
@@ -48,12 +42,14 @@ return require('packer').startup(function(use)
   -- autopair
   use 'windwp/nvim-autopairs'
 
-  -- treesitter interface
+  --INTERFACE
+  -- Highlighting by language
   use 'nvim-treesitter/nvim-treesitter'
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   --use 'nvim-treesitter/nvim-tree-docs'
   --use 'p00f/nvim-ts-rainbow'
 
--- neogen
+-- Better annotation generator
 use {
     "danymat/neogen",
     requires = "nvim-treesitter/nvim-treesitter",
@@ -80,9 +76,10 @@ use {
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-dap.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'ibhagwan/fzf-lua'
 
--- Lua
+-- Showing Diagnostic
 use {
   "folke/trouble.nvim",
   requires = "kyazdani42/nvim-web-devicons",
@@ -111,7 +108,7 @@ use {
      requires = 'hrsh7th/nvim-cmp'
   }
 
-
+  -- Showing Pictograms suggest to complete in code
   use {'onsails/lspkind-nvim'}
   if packer_bootstrap then
     require('packer').sync()
