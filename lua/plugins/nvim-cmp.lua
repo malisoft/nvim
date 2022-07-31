@@ -63,12 +63,12 @@ cmp.setup {
 
   -- load sources, see: https://github.com/topics/nvim-cmp
   sources = {
+    { name = 'cmp_tabnine' },
     { name = 'nvim_lsp' },
     { name = 'luasnip', option = {use_show_condition=false}},
     { name = 'path' },
     { name = 'buffer' },
     { name = 'spell' },
-    --{ name = 'cmp_tabnine' },
   },
 
   formatting = {

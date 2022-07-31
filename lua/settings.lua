@@ -65,8 +65,8 @@ opt.synmaxcol = 1000      -- max column for syntax highlight
 -- Tabs, indent
 -----------------------------------------------------------
 opt.expandtab = true      -- use spaces instead of tabs
-opt.shiftwidth = 4        -- shift 4 spaces when tab
-opt.tabstop = 4           -- 1 tab == 4 spaces
+opt.shiftwidth = 2        -- shift 4 spaces when tab
+opt.tabstop = 2           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
 
 -- don't auto commenting new lines
@@ -82,8 +82,7 @@ cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=0]]
 
 -- IndentLine
 --g.indentLine_setColors = 0  -- set indentLine color
-g.indentLine_char = '|'       -- set indentLine character
-
+--g.indentLine_char = '|'       -- set indentLine character
 -----------------------------------------------------------
 -- Terminal
 -----------------------------------------------------------
