@@ -71,16 +71,16 @@ map("n", "gr", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true
 -- to generate better annotations ->:Neogen func|class|type|...
 map("n", "<leader>ng", ":lua require('neogen').generate()<CR>", { noremap = true })
 
--- Hop
+-- Hope
 -- allows jump in a document
-map("n", "<leader>sk", ":HopWord<CR>", { noremap = true })
+map("n", "<leader>jp", ":HopWord<CR>", { noremap = true })
 
 -- Barbar
 -- Move to previous/next
 map('n', "<leader>j", '<Cmd>BufferPrevious<CR>', default_opts)
 map('n', '<leader>k', '<Cmd>BufferNext<CR>', default_opts)
 -- Close a Buffer
-map('n', '<A-e>', '<Cmd>BufferClose<CR>', default_opts)
+map('n', '<leader>e', '<Cmd>BufferClose<CR>', default_opts)
 map('n', '<leader>p', '<Cmd>BufferPin<CR>', default_opts)
 -- Re-order to previous/next
 map('n', '<A-j>', '<Cmd>BufferMovePrevious<CR>', default_opts)

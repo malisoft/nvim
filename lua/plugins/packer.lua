@@ -34,28 +34,28 @@ return require('packer').startup(function(use)
   use 'Shatur/neovim-ayu'
   -- Highlighting by language
   use 'nvim-treesitter/nvim-treesitter'
-use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-treesitter-context'
   -- icons
   use 'kyazdani42/nvim-web-devicons'
   use 'norcalli/nvim-colorizer.lua'
   -- to show parenthesis in colors like a rainbow
   use 'p00f/nvim-ts-rainbow'
   --use 'nvim-treesitter/nvim-tree-docs'
-use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-}
-use {
-  'romgrk/barbar.nvim',
-  requires = {'kyazdani42/nvim-web-devicons'}
-}
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'}
+  }
 
   --HELPERS
 -- Better annotation generator
-use {
-    "danymat/neogen",
-    requires = "nvim-treesitter/nvim-treesitter",
-}
+  use {
+      "danymat/neogen",
+      requires = "nvim-treesitter/nvim-treesitter",
+  }
   use {
       'phaazon/hop.nvim',
       branch = 'v2', -- optional but strongly recommended
@@ -64,15 +64,6 @@ use {
         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       end
   }
-
-
-
-  -- tabs
-  --use {
-  --  'nanozuki/tabby.nvim',
-  --  requires = { 'kyazdani42/nvim-web-devicons' },
-  --}
-
 
   -- fuzzy finder
   use 'nvim-lua/popup.nvim'
@@ -87,17 +78,17 @@ use {
   use 'ibhagwan/fzf-lua'
 
 -- Showing Diagnostic
-use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- autocomplete
   use{'neovim/nvim-lspconfig'}
@@ -114,9 +105,17 @@ use {
      run='./install.sh',
      requires = 'hrsh7th/nvim-cmp'
   }
+
+  --to generate tag
   use{'windwp/nvim-ts-autotag'}
   -- Showing Pictograms suggest to complete in code
   use {'onsails/lspkind-nvim'}
+
+  --for flutter
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+  use 'dart-lang/dart-vim-plugin'
+  use 'natebosch/vim-lsc'
+  use 'natebosch/vim-lsc-dart'
   if packer_bootstrap then
     require('packer').sync()
   end
