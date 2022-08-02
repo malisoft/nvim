@@ -12,11 +12,11 @@ return require('packer').startup(function(use)
   use {
       'nvim-neo-tree/neo-tree.nvim',
       branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim"
-    },
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim"
+      },
   }
   use 'edkolev/tmuxline.vim'
   -- side bar in the  footer
@@ -75,7 +75,8 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-dap.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
-  use 'ibhagwan/fzf-lua'
+  -- use 'ibhagwan/fzf-lua'
+  use { 'junegunn/fzf', run = './install --bin', }
 
 -- Showing Diagnostic
   use {
@@ -118,6 +119,8 @@ return require('packer').startup(function(use)
     },
   }
   use{'rafamadriz/friendly-snippets'}
+
+  use{'github/copilot.vim'}
 
     --to generate tag
   use{'windwp/nvim-ts-autotag'}

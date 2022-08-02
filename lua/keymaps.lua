@@ -51,7 +51,9 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 map('n', '<C-g>', ':LazyGit<CR>', default_opts)       -- open/close
 
 --nvim-fzf-lua
-map('n', '<C-p>', ':FzfLua files<CR>', default_opts)       -- open/close
+--map('n', '<C-p>', ':FzfLua files<CR>', default_opts)       -- open/close
+--vim-fzf
+map('n', '<C-p>', ':FZF<CR>', default_opts)       -- open/close
 
 -- nvim-tree
 map('n', '<leader>nt', ':Neotree toggle<CR>', default_opts)       -- open/close
@@ -102,6 +104,14 @@ map('n', '<A-p>', '<Cmd>BufferPin<CR>', default_opts)
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', default_opts)
 -- Magic buffer-picking mode
 map('n', '<leader>bp', '<Cmd>BufferPick<CR>', default_opts)
+
+
+--map('i', '<C-a>', 'copilot#Accept()<CR>', default_opts)
+
+map("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true })
+--vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
+--imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+
 -- Sort automatically by...
 --map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
 --map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
