@@ -10,6 +10,19 @@ local luasnip = require 'luasnip'
 local compare = require('cmp.config.compare')
 local lspkind = require('lspkind')
 
+--https://github.com/rafamadriz/friendly-snippets
+luasnip.filetype_extend("javascript", {"javascript"})
+luasnip.filetype_extend("typescript", {"javascript/typescript"})
+luasnip.filetype_extend("dart", {"flutter"})
+
+local source_mapping = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	cmp_tabnine = "[TN]",
+	path = "[Path]",
+}
+
 cmp.setup {
   -- load snippet support
   snippet = {
@@ -19,10 +32,10 @@ cmp.setup {
   },
 
 -- completion settings
-  completion = {
+  --[[ completion = {
     completeopt = 'menuone,noselect,noinsert'
   },
-
+ --]]
   -- key mapping
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item {
@@ -61,41 +74,60 @@ cmp.setup {
     end, {"i", "s"}),
   },
 
-  -- load sources, see: https://github.com/topics/nvim-cmp
-  sources = {
-    { name = 'cmp_tabnine' },
-    { name = 'nvim_lsp' },
-    { name = 'luasnip', option = {use_show_condition=false}},
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'spell' },
-  },
-
+  sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' }, -- For luasnip users.
+      { name = 'path' },
+      { name = 'buffer' },
+      { name = 'cmdline' },
+    }),
   formatting = {
-    format = lspkind.cmp_format({
-      --mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
-        return vim_item
-      end
-    })
-  },
-
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      --require('cmp_tabnine.compare'),
-      compare.offset,
-      compare.exact,
-      compare.score,
-      compare.recently_used,
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
+    format = lspkind.cmp_format({with_text = true, menu = ({
+      buffer = "[Buffer]",
+      nvim_lsp = "[LSP]",
+      luasnip = "[LuaSnip]",
+      nvim_lua = "[Lua]",
+      latex_symbols = "[Latex]",
+      Text = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
+      Field = "ﰠ",
+      Variable = "",
+      Class = "ﴯ",
+      Interface = "",
+      Module = "",
+      Property = "ﰠ",
+      Unit = "U",
+      Value = "V",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "פּ",
+      Event = "",
+      Operator = "",
+      TypeParameter = "T"
+    })}),
   },
 }
+
+ -- Use buffer source for `/`.
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})

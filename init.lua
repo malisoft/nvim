@@ -13,7 +13,6 @@ require('plugins/barbar')
 --To show you when a salt of line or there are spaces
 require('plugins/indent-blankline')
 --snippets
---require('plugins/luasnip')
 --Descrition generator
 require('plugins/neogen')
 --File finder
@@ -37,7 +36,8 @@ require('plugins/nvim-ts-autotag')
 --To generate comments
 require('plugins/commented')
 --Autocompleter
+require('plugins/luasnip')
+require('plugins/nvim-lspconfig-mason')
 require('plugins/nvim-lspconfig')
-require('plugins/nvim-tabnine')
 require('plugins/nvim-cmp')
 require('plugins/flutter-tools')

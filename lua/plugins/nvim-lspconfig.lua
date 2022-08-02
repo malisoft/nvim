@@ -52,11 +52,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('x', '<space>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<C-l>', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- buf_set_keymap('n', '<space>l', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>d', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<C-o>', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
 
@@ -76,30 +77,15 @@ end
 Language servers:
 
 Add your language server to `servers`
-
-For language servers list see:
-https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-
-Bash --> bashls
-https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#bashls
-
-Python --> pyright
-https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyright
-
-C-C++ -->  clangd
-https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#clangd
-
-HTML/CSS/JSON --> vscode-html-languageserver
-https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#html
-
-JavaScript/TypeScript --> tsserver
-https://github.com/typescript-language-server/typescript-language-server
-
+-------------
+use the command ":Mason" to add automaticly
 --]]
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'pyright', 'html', 'tsserver'}
+local servers = { 'bashls', 'efm', 'pyright', 'html', 'tsserver', 'diagnosticls', 'phpactor'}
+--without tsserver
+--local servers = { 'bashls', 'pyright', 'html', 'tsserver'}
 --local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver'}
 
 -- Set settings for language servers below
@@ -123,7 +109,7 @@ end
 
 --require "lspconfig".tsserver.setup {}
 --visit https://github.com/mattn/efm-langserver
-require "lspconfig".efm.setup {
+nvim_lsp.efm.setup {
     init_options = {documentFormatting = true},
     settings = {
         rootMarkers = {".git/"},
@@ -191,101 +177,88 @@ require "lspconfig".efm.setup {
     --    }
     --}
 }
+nvim_lsp.phpactor.setup{}
+nvim_lsp.tsserver.setup{}
 
---here was rust
-
---npm install -g @tailwindcss/language-server
---https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#vuels
-require'lspconfig'.tailwindcss.setup{
-    --cmd={ "tailwindcss-language-server", "--stdio" },
-    filetypes={ "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "htmldjango", "edge", "eelixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascriptreact", "reason", "rescript", "typescriptreact", "vue", "svelte" }
+-----------------------------------------------
+--- Linter setup
+local filetypes = {
+  typescript = "eslint",
+  typescriptreact = "eslint",
+  python = "flake8",
+  php = {"phpcs"},
 }
-
---visit to https://intelephense.com/   and   https://github.com/bmewburn/intelephense-docs
-nvim_lsp.intelephense.setup({
-  settings = {
-        intelephense = {
-            stubs = {
-                "acf-pro",
-                "apache",
-                "bcmath",
-                "bz2",
-                "calendar",
-                "com_dotnet",
-                "Core",
-                "ctype",
-                "curl",
-                "date",
-                "dba",
-                "dom",
-                "enchant",
-                "exif",
-                "FFI",
-                "fileinfo",
-                "filter",
-                "fpm",
-                "ftp",
-                "gd",
-                "gettext",
-                "gmp",
-                "hash",
-                "iconv",
-                "imap",
-                "intl",
-                "json",
-                "ldap",
-                "libxml",
-                "mbstring",
-                "meta",
-                "mysqli",
-                "oci8",
-                "odbc",
-                "openssl",
-                "pcntl",
-                "pcre",
-                "PDO",
-                "pdo_ibm",
-                "pdo_mysql",
-                "pdo_pgsql",
-                "pdo_sqlite",
-                "pgsql",
-                "Phar",
-                "polylang",
-                "posix",
-                "pspell",
-                "readline",
-                "Reflection",
-                "session",
-                "shmop",
-                "SimpleXML",
-                "snmp",
-                "soap",
-                "sockets",
-                "sodium",
-                "SPL",
-                "sqlite3",
-                "standard",
-                "superglobals",
-                "sysvmsg",
-                "sysvsem",
-                "sysvshm",
-                "tidy",
-                "tokenizer",
-                "wordpress",
-                "wordpress-globals",
-                "wp-cli",
-                "xml",
-                "xmlreader",
-                "xmlrpc",
-                "xmlwriter",
-                "xsl",
-                "Zend OPcache",
-                "zip",
-                "zlib"
-            },
-            files = {
-                maxSize = 5000000;
-            };
-        };
-    }
-});
+ 
+local linters = {
+  eslint = {
+    sourceName = "eslint",
+    command = "./node_modules/.bin/eslint",
+    rootPatterns = {".eslintrc.js", "package.json"},
+    debouce = 100,
+    args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+    parseJson = {
+      errorsRoot = "[0].messages",
+      line = "line",
+      column = "column",
+      endLine = "endLine",
+      endColumn = "endColumn",
+      message = "${message} [${ruleId}]",
+      security = "severity"
+    },
+    securities = {[2] = "error", [1] = "warning"}
+  },
+  flake8 = {
+    command = "flake8",
+    sourceName = "flake8",
+    args = {"--format", "%(row)d:%(col)d:%(code)s: %(text)s", "%file"},
+    formatPattern = {
+      "^(\\d+):(\\d+):(\\w+):(\\w).+: (.*)$",
+      {
+          line = 1,
+          column = 2,
+          message = {"[", 3, "] ", 5},
+          security = 4
+      }
+    },
+    securities = {
+      E = "error",
+      W = "warning",
+      F = "info",
+      B = "hint",
+    },
+  },
+  phpcs = {
+    command = "/home/malisoftdev/.config/composer/vendor/bin//phpcs",
+    sourceName = "phpcs",
+    debounce = 300,
+    rootPatterns = {"composer.lock", "vendor", ".git"},
+    args = { "--standard=PSR12", "--report=emacs", "-s", "-" },
+    offsetLine = 0,
+    offsetColumn = 0,
+    sourceName = "phpcs",
+    formatLines = 1,
+    formatPattern = {
+      --"^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)(\\r|\\n)*$",
+      "^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)$",
+      {
+        line = 1,
+        column = 2,
+        message = 4,
+        security = 3
+      }
+    },
+    securities = {
+      error = "error",
+      warning = "warning",
+    },
+    requiredFiles = {"vendor/bin/phpcs"}
+  },
+}
+nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
+  filetypes = vim.tbl_keys(filetypes),
+  init_options = {
+    filetypes = filetypes,
+    linters = linters,
+  },
+}

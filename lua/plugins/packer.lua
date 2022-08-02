@@ -6,7 +6,7 @@ end
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-
+  
   -- FILE NAVIGATION
   --use 'kyazdani42/nvim-tree.lua'
   use {
@@ -90,26 +90,39 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+  }
   -- autocomplete
+  --use{'saadparwaiz1/cmp_luasnip'}
+  --use{'L3MON4D3/LuaSnip', config = function() require'completion'.luasnip() end}
   use{'neovim/nvim-lspconfig'}
-  use{'hrsh7th/cmp-nvim-lsp'}
+
+  --[[ use{'hrsh7th/cmp-nvim-lsp'}
   use{'hrsh7th/cmp-buffer'}
   use{'hrsh7th/cmp-path'}
   use{'hrsh7th/cmp-cmdline'}
-  use{'hrsh7th/nvim-cmp'}
+  use{'hrsh7th/nvim-cmp'} --]]
 
-  use{'L3MON4D3/LuaSnip'}
-  use{'saadparwaiz1/cmp_luasnip'}
 
-  use {'tzachar/cmp-tabnine',
-     run='./install.sh',
-     requires = 'hrsh7th/nvim-cmp'
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'saadparwaiz1/cmp_luasnip',
+    },
   }
+  use{'rafamadriz/friendly-snippets'}
 
-  --to generate tag
+    --to generate tag
   use{'windwp/nvim-ts-autotag'}
   -- Showing Pictograms suggest to complete in code
-  use {'onsails/lspkind-nvim'}
+  use{'onsails/lspkind-nvim'}
 
   --for flutter
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
