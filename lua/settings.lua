@@ -40,7 +40,6 @@ opt.undodir="~/.nvim/undo/backup"
 g.neovide_cursor_vfx_mode = "railgun"
 
 opt.list = true
-opt.listchars = 'tab:▸ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»'
 
 -- autoexec
 exec([[

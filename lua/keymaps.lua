@@ -12,13 +12,6 @@ map('', '<down>', '<nop>', {noremap = true})
 map('', '<left>', '<nop>', {noremap = true})
 map('', '<right>', '<nop>', {noremap = true})
 
---allow to move in insert mode
---[[ map('i', '<C-h>', '<left>', default_opts)
-map('i', '<C-j>', '<down>', default_opts)
-map('i', '<C-k>', '<up>', default_opts)
-map('i', '<C-l>', '<right>', default_opts) --]]
-
-
 map('n', '<C-t>', ':Term<CR>', default_opts)
 
 
@@ -58,7 +51,6 @@ map('n', '<leader>nt', ':Neotree toggle<CR>', default_opts)       -- open/close
 --map('n', '<leader>r', ':NvimTreeRefresh<CR>', default_opts)  -- refresh
 --map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
 
-
 -- Trouble
 map("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
 map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", {silent = true, noremap = true})
@@ -78,42 +70,9 @@ map("n", "<leader>jp", ":HopWord<CR>", { noremap = true })
 -- Barbar
 -- Move to previous/next
 map('n', "<leader>j", ':bprevious<CR>', default_opts)
---map('n', "<leader>j", '<Cmd>BufferPrevious<CR>', default_opts)
 map('n', '<leader>k', ':bnext<CR>', default_opts)
---map('n', '<leader>k', '<Cmd>BufferNext<CR>', default_opts)
 -- Close a Buffer
-map('n', '<leader>e', '<Cmd>BufferClose<CR>', default_opts)
-map('n', '<leader>p', '<Cmd>BufferPin<CR>', default_opts)
--- Re-order to previous/next
-map('n', '<A-j>', '<Cmd>BufferMovePrevious<CR>', default_opts)
-map('n', '<A-k>', '<Cmd>BufferMoveNext<CR>', default_opts)
--- Goto buffer in position...
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', default_opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', default_opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', default_opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', default_opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', default_opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', default_opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', default_opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', default_opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', default_opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', default_opts)
--- Pin/unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', default_opts)
--- Close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', default_opts)
--- Magic buffer-picking mode
-map('n', '<leader>bp', '<Cmd>BufferPick<CR>', default_opts)
-
-
---map('i', '<C-a>', 'copilot#Accept()<CR>', default_opts)
-
+map('n', '<leader>e', ':bdelete<CR>', default_opts)
+-- To acept copilot suggestion
 map("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true })
---vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
---imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
--- Sort automatically by...
---map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
---map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
---map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
---map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
