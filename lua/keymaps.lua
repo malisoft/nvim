@@ -13,10 +13,10 @@ map('', '<left>', '<nop>', {noremap = true})
 map('', '<right>', '<nop>', {noremap = true})
 
 --allow to move in insert mode
-map('i', '<C-h>', '<left>', default_opts)
+--[[ map('i', '<C-h>', '<left>', default_opts)
 map('i', '<C-j>', '<down>', default_opts)
 map('i', '<C-k>', '<up>', default_opts)
-map('i', '<C-l>', '<right>', default_opts)
+map('i', '<C-l>', '<right>', default_opts) --]]
 
 
 map('n', '<C-t>', ':Term<CR>', default_opts)
@@ -48,10 +48,8 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 
 
 --nvim-lazygit
-map('n', '<C-g>', ':LazyGit<CR>', default_opts)       -- open/close
+map('n', '<leader>gg', ':LazyGit<CR>', default_opts)       -- open/close
 
---nvim-fzf-lua
---map('n', '<C-p>', ':FzfLua files<CR>', default_opts)       -- open/close
 --vim-fzf
 map('n', '<C-p>', ':FZF<CR>', default_opts)       -- open/close
 
@@ -79,8 +77,10 @@ map("n", "<leader>jp", ":HopWord<CR>", { noremap = true })
 
 -- Barbar
 -- Move to previous/next
-map('n', "<leader>j", '<Cmd>BufferPrevious<CR>', default_opts)
-map('n', '<leader>k', '<Cmd>BufferNext<CR>', default_opts)
+map('n', "<leader>j", ':bprevious<CR>', default_opts)
+--map('n', "<leader>j", '<Cmd>BufferPrevious<CR>', default_opts)
+map('n', '<leader>k', ':bnext<CR>', default_opts)
+--map('n', '<leader>k', '<Cmd>BufferNext<CR>', default_opts)
 -- Close a Buffer
 map('n', '<leader>e', '<Cmd>BufferClose<CR>', default_opts)
 map('n', '<leader>p', '<Cmd>BufferPin<CR>', default_opts)

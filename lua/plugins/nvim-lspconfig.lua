@@ -83,7 +83,8 @@ use the command ":Mason" to add automaticly
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'efm', 'pyright', 'html', 'tsserver', 'diagnosticls', 'phpactor'}
+local servers = { 'bashls', 'efm', 'pyright', 'html', 'tsserver', 'diagnosticls', 'intelephense'}
+--npm install -g intelephense
 --without tsserver
 --local servers = { 'bashls', 'pyright', 'html', 'tsserver'}
 --local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver'}
@@ -177,8 +178,26 @@ nvim_lsp.efm.setup {
     --    }
     --}
 }
-nvim_lsp.phpactor.setup{}
+--nvim_lsp.phpactor.setup{}
 nvim_lsp.tsserver.setup{}
+nvim_lsp.intelephense.setup{
+  filetypes = {"php"},
+  settings = {
+    rootMarkers = {".git/"},
+    languages = {
+      php = {
+        lintCommand = "php -l",
+        lintStdin = true,
+        lintFormats = {
+          "%f:%l:%c: %m"
+        },
+        lintIgnoreExitCode = true,
+        formatCommand = "php -l",
+        formatStdin = true
+      }
+    }
+  }
+}
 
 -----------------------------------------------
 --- Linter setup
@@ -228,7 +247,7 @@ local linters = {
     },
   },
   phpcs = {
-    command = "/home/malisoftdev/.config/composer/vendor/bin//phpcs",
+    command = "~/.config/composer/vendor/bin//phpcs",
     sourceName = "phpcs",
     debounce = 300,
     rootPatterns = {"composer.lock", "vendor", ".git"},
@@ -251,7 +270,7 @@ local linters = {
       error = "error",
       warning = "warning",
     },
-    requiredFiles = {"vendor/bin/phpcs"}
+    requiredFiles = {"~/.config/composer/vendor/bin//phpcs"}
   },
 }
 nvim_lsp.diagnosticls.setup {

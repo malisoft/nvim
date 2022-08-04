@@ -36,7 +36,6 @@ opt.linebreak = true          -- wrap on word boundary
 opt.conceallevel = 0
 opt.termguicolors = true
 opt.guifont = "JetBrainsMono Nerd Font"
-
 opt.undodir="~/.nvim/undo/backup"
 g.neovide_cursor_vfx_mode = "railgun"
 

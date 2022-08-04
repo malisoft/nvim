@@ -18,37 +18,32 @@ return require('packer').startup(function(use)
         "MunifTanjim/nui.nvim"
       },
   }
+  --to set colors to tmux extension
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
   use 'edkolev/tmuxline.vim'
-  -- side bar in the  footer
-  use 'sidebar-nvim/sidebar.nvim'
 
   -- indent line
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- autopair
   use 'windwp/nvim-autopairs'
+
   -- to generate comments
   use 'winston0410/commented.nvim'
 
   --INTERFACE
-  use 'Shatur/neovim-ayu'
+  use 'rafi/awesome-vim-colorschemes'
+
   -- Highlighting by language
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-context'
   -- icons
   use 'kyazdani42/nvim-web-devicons'
+  use 'ryanoasis/vim-devicons'
   use 'norcalli/nvim-colorizer.lua'
   -- to show parenthesis in colors like a rainbow
   use 'p00f/nvim-ts-rainbow'
-  --use 'nvim-treesitter/nvim-tree-docs'
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  use {
-    'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
 
   --HELPERS
 -- Better annotation generator
@@ -100,13 +95,6 @@ return require('packer').startup(function(use)
   --use{'L3MON4D3/LuaSnip', config = function() require'completion'.luasnip() end}
   use{'neovim/nvim-lspconfig'}
 
-  --[[ use{'hrsh7th/cmp-nvim-lsp'}
-  use{'hrsh7th/cmp-buffer'}
-  use{'hrsh7th/cmp-path'}
-  use{'hrsh7th/cmp-cmdline'}
-  use{'hrsh7th/nvim-cmp'} --]]
-
-
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -119,13 +107,17 @@ return require('packer').startup(function(use)
     },
   }
   use{'rafamadriz/friendly-snippets'}
-
   use{'github/copilot.vim'}
 
     --to generate tag
   use{'windwp/nvim-ts-autotag'}
+
   -- Showing Pictograms suggest to complete in code
   use{'onsails/lspkind-nvim'}
+
+  --to use git
+  use 'kdheepak/lazygit.nvim'
+  use 'airblade/vim-gitgutter'  --to enable run :GitGutterEnable
 
   --for flutter
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
