@@ -4,7 +4,15 @@ local g = vim.g                       -- global variables
 --opt.background = "light"
 g.tmuxline_preset = 'tmux'
 --g.tmuxline_theme = 'bubblegum'
-g.airline_theme = 'sonokai'
+--oceanicnext
+--pink-moon
+--purify
+--tender
+--twofirewatch
+--archery
+--cobalt2 for tmux
+--torte
+g.airline_theme = 'molokai'
 cmd[[colorscheme sonokai]]
 
 cmd[[let g:airline#extensions#tabline#enabled = 1]] 
