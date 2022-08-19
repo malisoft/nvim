@@ -12,8 +12,9 @@ g.tmuxline_preset = 'tmux'
 --archery
 --cobalt2 for tmux
 --torte
-g.airline_theme = 'molokai'
-cmd[[colorscheme sonokai]]
+--ayu
+g.airline_theme = 'ayu_dark'
+cmd[[colorscheme ayu]]
 
 cmd[[let g:airline#extensions#tabline#enabled = 1]] 
 cmd[[let g:airline#extensions#tabline#left_sep = '']]

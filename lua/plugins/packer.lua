@@ -117,13 +117,16 @@ return require('packer').startup(function(use)
 
   --to use git
   use 'kdheepak/lazygit.nvim'
-  use 'airblade/vim-gitgutter'  --to enable run :GitGutterEnable
 
   --for flutter
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
   use 'dart-lang/dart-vim-plugin'
   use 'natebosch/vim-lsc'
   use 'natebosch/vim-lsc-dart'
+
+  use {
+    'lewis6991/gitsigns.nvim',
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
