@@ -249,7 +249,7 @@ local linters = {
     },
   },
   phpcs = {
-    command = "~/.config/composer/vendor/bin//phpcs",
+    command = "vendor/bin/phpcs",
     sourceName = "phpcs",
     debounce = 300,
     rootPatterns = {"composer.lock", "vendor", ".git"},
@@ -272,7 +272,7 @@ local linters = {
       error = "error",
       warning = "warning",
     },
-    requiredFiles = {"~/.config/composer/vendor/bin//phpcs"}
+    requiredFiles = {"vendor/bin/phpcs"}
   },
 }
 nvim_lsp.diagnosticls.setup {

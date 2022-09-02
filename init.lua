@@ -25,6 +25,8 @@ require('plugins/nvim-autopairs')
 require('plugins/nvim-colorizer')
 --To close html tag
 require('plugins/nvim-ts-autotag')
+--Formatter
+require('plugins/nvim-formatter')
 --To generate comments
 require('plugins/commented')
 --Autocompleter

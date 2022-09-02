@@ -47,21 +47,22 @@ map('n', '<leader>gg', ':LazyGit<CR>', default_opts)       -- open/close
 map('n', '<C-p>', ':FZF<CR>', default_opts)       -- open/close
 
 -- nvim-tree
-map('n', '<leader>nt', ':Neotree toggle<CR>', default_opts)       -- open/close
---map('n', '<leader>r', ':NvimTreeRefresh<CR>', default_opts)  -- refresh
+map('n', '<leader>nt', ':Neotree toggle<CR>', default_opts)  -- open/close
+map('n', '<leader>nr', ':NvimTreeRefresh<CR>', default_opts)  -- refresh
 --map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
 
 -- Trouble
-map("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
-map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", {silent = true, noremap = true})
-map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", {silent = true, noremap = true})
-map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
-map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
-map("n", "gr", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
+map("n", "<leader>xx", "<cmd>Trouble<cr>", default_opts)
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", default_opts)
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", default_opts)
+map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", default_opts)
+map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", default_opts)
+map("n", "gr", "<cmd>Trouble lsp_references<cr>", default_opts)
+map("n", "<leader>aw", "<cmd>lua vim.lsp.buf.code_action()<CR>", default_opts)
 
 -- Neogen
 -- to generate better annotations ->:Neogen func|class|type|...
-map("n", "<leader>ng", ":lua require('neogen').generate()<CR>", { noremap = true })
+map("n", "<leader>an", ":lua require('neogen').generate()<CR>", { noremap = true })
 
 -- Hope
 -- allows jump in a document
@@ -75,4 +76,3 @@ map('n', '<leader>k', ':bnext<CR>', default_opts)
 map('n', '<leader>e', ':bdelete<CR>', default_opts)
 -- To acept copilot suggestion
 map("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true })
-

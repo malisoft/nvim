@@ -112,6 +112,9 @@ return require('packer').startup(function(use)
     --to generate tag
   use{'windwp/nvim-ts-autotag'}
 
+  -- to autoformat
+  use{'mhartington/formatter.nvim'}
+
   -- Showing Pictograms suggest to complete in code
   use{'onsails/lspkind-nvim'}
 
