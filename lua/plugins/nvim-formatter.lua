@@ -38,8 +38,8 @@ formatter.setup {
     php = {
       function ()
         return {
-          exe = './vendor/bin/phpcbf',
-          args = {'--stdin-path=' .. vim.api.nvim_buf_get_name(0), '-'},
+          exe = '~/vendor/bin/phpcbf',
+          args = {'--standard=PSR12 --stdin-path=' .. vim.api.nvim_buf_get_name(0), '-'},
           stdin = true,
           ignore_exitcode = true,
         }

@@ -17,8 +17,9 @@ require('telescope').setup{
             vertical = { width = 0.95, anchor=2 }
     },
                 initial_mode = 'insert',
-                prompt_prefix = ' ❯',
-                file_ignore_patterns = { '.git/*', 'node_modules', 'env/*' },
+                prompt_prefix = ' ❯',
+                selection_caret = " ",
+                file_ignore_patterns = { '.git/*', 'node_modules', 'env/*', 'vendor' },
                 color_devicons = true,
                 winblend = 20,
                 file_sorter = sorters.get_fzy_sorter,
@@ -79,7 +80,6 @@ require('telescope').setup{
   }
 }
 require("telescope").load_extension("file_browser")
---require('telescope').extensions.media_files.media_files()
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension('fzy_native')
 require('telescope').load_extension('media_files')
@@ -89,9 +89,8 @@ local map = vim.api.nvim_set_keymap
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>fc', '<cmd>lua require("telescope.builtin").commands()<cr>', opts)
 map('n', '<leader>fd', '<cmd>lua require("telescope.builtin").diagnostics()<cr>', opts)
-map('n', '<leader>ff', ':Telescope file_browser<cr>', opts)
-map('n', '<leader>fm', '<cmd>lua require("telescope.builtin").media_files()<cr>', opts)
---map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
+map('n', '<leader>fp', '<cmd>lua require("telescope").extensions.media_files.media_files()<cr>', opts)
+map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>fgb', '<cmd>lua require("telescope.builtin").git_branches()<cr>', opts)
 map('n', '<leader>fgc', '<cmd>lua require("telescope.builtin").git_commits()<cr>', opts)

@@ -75,7 +75,6 @@ for type, icon in pairs(signs) do
 end
 
 --[[
-
 Language servers:
 
 Add your language server to `servers`
@@ -85,12 +84,7 @@ use the command ":Mason" to add automaticly
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'efm', 'pyright', 'html', 'tsserver', 'diagnosticls', 'intelephense'}
---npm install -g intelephense
---without tsserver
---local servers = { 'bashls', 'pyright', 'html', 'tsserver'}
---local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver'}
-
+local servers = { 'bashls', 'pyright', 'html', 'tsserver','tailwindcss', 'intelephense', 'vuels', 'diagnosticls'}
 -- Set settings for language servers below
 --
 -- tsserver settings
@@ -110,104 +104,109 @@ for _, lsp in ipairs(servers) do
   }
 end
 
---require "lspconfig".tsserver.setup {}
---visit https://github.com/mattn/efm-langserver
-nvim_lsp.efm.setup {
-    init_options = {documentFormatting = true},
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            javascript = {
-                lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-                lintStdin = true,
-                lintFormats = {
-                    "%f:%l:%c: %m"
-                },
-                lintIgnoreExitCode = true,
-                formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-                formatStdin = true
-            },
-            sh = {
-                {LintCommand = "shellcheck -f gcc -x",
-                 LintFormats = {
-                     "%f:%l:%c: %trror: %m",
-                     "%f:%l:%c: %tarning: %m",
-                     "%f:%l:%c: %tote: %m"}
-                 }
-            },
-            dockerfile = {
-                {
-                    LintCommand = "hadolint --no-color",
-                    LintFormats = {
-                        "%f:%l %m",
-                    }
-                }
-            },
-            python = {
-                {
-                    LintCommand = "mypy --show-column-numbers",
-                    LintFormats = {
-                        "%f:%l:%c: %trror: %m",
-                        "%f:%l:%c: %tarning: %m",
-                        "%f:%l:%c: %tote: %m"
-                    }
-                },
-                {
-                    LintCommand = "flake8 --stdin-display-name ${INPUT} -",
-                    LintFormats = {
-                        "%f:%l:%c: %m"
-                    }
-                },
-                {
-                    LintCommand = "pylint --output-format text --score no --msg-template {path}:{line}:{column}:{C}:{msg} ${INPUT}",
-                    LintFormats = {
-                        "%f:%l:%c:%t:%m"
-                    }
-                },
-                {
-                    FormatCommand = "autopep8 -"
-                }
-                --{
-                --    FormatCommand = {"autopep8 -", FormatStdin = true}
-                --}
-            }
-        }
-    }
-    --settings = {
-    --    filetypes = {"python"},
-    --    languages = {
-    --      python = {formatCommand = "autopep8 -", formatStdin = true}
-    --    }
-    --}
-}
---nvim_lsp.phpactor.setup{}
-nvim_lsp.tsserver.setup{}
-nvim_lsp.intelephense.setup{
-  filetypes = {"php"},
+nvim_lsp.tsserver.setup{
+  on_attach = on_attach,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  capabilities = capabilities,
+  ts_settings = ts_settings,
+  flags = {
+    debounce_text_changes = 150,
+  },
   settings = {
-    rootMarkers = {".git/"},
-    languages = {
-      php = {
-        lintCommand = "php -l",
-        lintStdin = true,
-        lintFormats = {
-          "%f:%l:%c: %m"
-        },
-        lintIgnoreExitCode = true,
-        formatCommand = "php -l",
-        formatStdin = true
+    documentFormatting = false,
+    documentRangeFormatting = false,
+    codeAction = true,
+    codeLens = false,
+    diagnostics = true,
+    documentHighlight = false,
+    documentSymbol = false,
+    hover = false,
+    references = false,
+    rename = false,
+    signatureHelp = false,
+    workspaceSymbol = false,
+    completion = false,
+    executeCommand = false,
+    workspace = {
+      workspaceFolders = false,
+      configuration = false,
+      didChangeConfiguration = false,
+      didChangeWatchedFiles = false,
+      symbol = false,
+      executeCommand = false,
+      applyEdit = false,
+    },
+  },
+}
+nvim_lsp.tailwindcss.setup{
+  settings = {
+    tailwindCSS = {
+      validate = true,
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning"
       }
     }
   }
 }
-
+nvim_lsp.intelephense.setup{
+  filetypes = {"php"},
+}
+nvim_lsp.vuels.setup{
+  filetypes = {"vue"},
+  init_options = {
+    config = {
+      css = {},
+      emmet = {},
+      html = {
+        suggest = {}
+      },
+      javascript = {
+        format = {
+          enable = true
+        }
+      },
+      stylusSupremacy = {},
+      typescript = {
+        format = {}
+      },
+      vetur = {
+        completion = {
+          autoImport = false,
+          tagCasing = "kebab",
+          useScaffoldSnippets = false
+        },
+        format = {
+          defaultFormatter = {
+            js = "eslint",
+            ts = "eslint"
+          },
+          defaultFormatterOptions = {},
+          scriptInitialIndent = false,
+          styleInitialIndent = false
+        },
+        useWorkspaceDependencies = false,
+        validation = {
+          script = true,
+          style = true,
+          template = true
+        }
+      }
+    }  
+  }
+}
 -----------------------------------------------
 --- Linter setup
 local filetypes = {
   typescript = "eslint",
   typescriptreact = "eslint",
   python = "flake8",
-  php = {"phpcs"},
+  php = "phpcs",
 }
  
 local linters = {
@@ -249,7 +248,7 @@ local linters = {
     },
   },
   phpcs = {
-    command = "vendor/bin/phpcs",
+    command = "./vendor/bin/phpcs",
     sourceName = "phpcs",
     debounce = 300,
     rootPatterns = {"composer.lock", "vendor", ".git"},
@@ -259,7 +258,6 @@ local linters = {
     sourceName = "phpcs",
     formatLines = 1,
     formatPattern = {
-      --"^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)(\\r|\\n)*$",
       "^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)$",
       {
         line = 1,
@@ -272,7 +270,6 @@ local linters = {
       error = "error",
       warning = "warning",
     },
-    requiredFiles = {"vendor/bin/phpcs"}
   },
 }
 nvim_lsp.diagnosticls.setup {
@@ -281,5 +278,18 @@ nvim_lsp.diagnosticls.setup {
   init_options = {
     filetypes = filetypes,
     linters = linters,
-  },
+  }, 
 }
+-----------------------------------------------
+--- LSP signature
+require'lsp_signature'.setup{
+  bind = true,
+  handler_opts = {
+    border = "single"
+  }
+}
+-----------------------------------------------
+--- LSP saga
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+-----------------------------------------------

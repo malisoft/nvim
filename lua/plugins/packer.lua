@@ -36,7 +36,10 @@ return require('packer').startup(function(use)
   use 'rafi/awesome-vim-colorschemes'
 
   -- Highlighting by language
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   use 'nvim-treesitter/nvim-treesitter-context'
   -- icons
   use 'kyazdani42/nvim-web-devicons'
@@ -63,7 +66,12 @@ return require('packer').startup(function(use)
   -- fuzzy finder
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  --use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
   use 'nvim-telescope/telescope-symbols.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
@@ -90,11 +98,14 @@ return require('packer').startup(function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
   }
-  -- autocomplete
-  --use{'saadparwaiz1/cmp_luasnip'}
-  --use{'L3MON4D3/LuaSnip', config = function() require'completion'.luasnip() end}
-  use{'neovim/nvim-lspconfig'}
-
+  use {'neovim/nvim-lspconfig'}
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+  })
+  use {
+    "ray-x/lsp_signature.nvim",
+  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
