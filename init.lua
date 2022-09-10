@@ -29,6 +29,8 @@ require('plugins/nvim-ts-autotag')
 require('plugins/nvim-formatter')
 --To generate comments
 require('plugins/commented')
+--To implement sidebar
+require('plugins/sidebar-nvim')
 --Autocompleter
 require('plugins/luasnip')
 require('plugins/nvim-lspconfig-mason')
@@ -36,3 +38,5 @@ require('plugins/nvim-lspconfig')
 require('plugins/nvim-cmp')
 require('plugins/flutter-tools')
 require('plugins/nvim-gitsings')
+require('plugins/nvim-lsp-signature')
+require('plugins/nvim-lspsaga')

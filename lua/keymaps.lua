@@ -41,7 +41,7 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 
 
 --nvim-lazygit
-map('n', '<leader>gg', ':LazyGit<CR>', default_opts)       -- open/close
+map('n', '<leader>lg', ':LazyGit<CR>', default_opts)       -- open/close
 
 --vim-fzf
 map('n', '<C-p>', ':FZF<CR>', default_opts)       -- open/close
@@ -58,6 +58,7 @@ map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", default_opts)
 map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", default_opts)
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", default_opts)
 map("n", "gr", "<cmd>Trouble lsp_references<cr>", default_opts)
+map("n", "gi", "<cmd>Trouble lsp_implementation<cr>", default_opts)
 map("n", "<leader>aw", "<cmd>lua vim.lsp.buf.code_action()<CR>", default_opts)
 
 -- Neogen
@@ -75,4 +76,4 @@ map('n', '<leader>k', ':bnext<CR>', default_opts)
 -- Close a Buffer
 map('n', '<leader>e', ':bdelete<CR>', default_opts)
 -- To acept copilot suggestion
-map("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true })
+map("i", "<C-f>", "copilot#Accept('<CR>')", { expr = true })

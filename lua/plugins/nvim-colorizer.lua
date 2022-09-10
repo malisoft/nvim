@@ -26,7 +26,7 @@ require 'colorizer'.setup({
 require 'colorizer'.setup {
   '*'; -- Highlight all files, but customize some others.
   css = { rgb_fn = true; }; -- Enable parsing rgb(...) functions in css.
-  html = { names = false; } -- Disable parsing "names" like Blue or Gray
+  html = { names = true; } -- Disable parsing "names" like Blue or Gray
 }
 
 -- Exclude some filetypes from highlighting by using `!`
