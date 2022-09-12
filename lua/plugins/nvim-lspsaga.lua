@@ -22,7 +22,7 @@ saga.init_lsp_saga({
   border_style = 'double',
   saga_winblend = 0,
   diagnostic_header = { " ", " ", " ", "ﴞ " },
-  show_diagnostic_source = true,
+  --show_diagnostic_source = true,
   code_action_num_shortcut = true,
 })
 

@@ -98,14 +98,9 @@ return require('packer').startup(function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
   }
-  use {'neovim/nvim-lspconfig'}
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-  })
-  use {
-    "ray-x/lsp_signature.nvim",
-  }
+  use { 'neovim/nvim-lspconfig' }
+  use { "ray-x/lsp_signature.nvim" }
+  use { "glepnir/lspsaga.nvim" }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -118,7 +113,6 @@ return require('packer').startup(function(use)
     },
   }
   use{'rafamadriz/friendly-snippets'}
-  use{'github/copilot.vim'}
 
     --to generate tag
   use{'windwp/nvim-ts-autotag'}

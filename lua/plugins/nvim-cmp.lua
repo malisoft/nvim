@@ -14,6 +14,8 @@ local lspkind = require('lspkind')
 luasnip.filetype_extend("javascript", {"javascript"})
 luasnip.filetype_extend("typescript", {"javascript/typescript"})
 luasnip.filetype_extend("dart", {"flutter"})
+luasnip.filetype_extend("php", {"php"})
+
 
 local source_mapping = {
 	buffer = "[Buffer]",

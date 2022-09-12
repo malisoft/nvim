@@ -59,11 +59,12 @@ local on_attach = function(client, bufnr)
 
 end
 
--- vim.diagnostic.config({
---     virtual_text = false,
---     signs = true,
---     float = { border = "single"},
--- })
+--[[ vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    float = { border = "single"},
+}) --]]
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -269,7 +270,6 @@ local linters = {
   },
 }
 nvim_lsp.diagnosticls.setup {
-  on_attach = on_attach,
   filetypes = vim.tbl_keys(filetypes),
   init_options = {
     filetypes = filetypes,

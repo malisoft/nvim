@@ -155,6 +155,11 @@ _G.packer_plugins = {
     path = "/home/merlo/.local/share/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/merlo/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lazygit.nvim"] = {
     loaded = true,
     path = "/home/merlo/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
@@ -259,6 +264,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/merlo/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["sidebar.nvim"] = {
+    loaded = true,
+    path = "/home/merlo/.local/share/nvim/site/pack/packer/start/sidebar.nvim",
+    url = "https://github.com/sidebar-nvim/sidebar.nvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,
