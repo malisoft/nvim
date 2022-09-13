@@ -25,13 +25,11 @@ map('n', '<down>', ':resize -5<CR>', default_opts)
 map('v', '<Tab>', '>gv', default_opts)
 map('v', '<S-Tab>', '<gv', default_opts)
 
-
 -- fast file saving
 map('n', '<leader>w', ':w<CR>', default_opts)
 
 -- fast neovim quit
 map('n', '<leader>q', ':q<CR>', default_opts)
-
 
 -- move around splits using Ctrl + {h,j,k,l}
 map('n', '<C-h>', '<C-w>h', default_opts)
