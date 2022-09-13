@@ -1,9 +1,10 @@
 
 -- that expose snippets in json files, for example <https://github.com/rafamadriz/friendly-snippets>.
 
-require("luasnip.loaders.from_vscode").load({ include = { "python" } }) -- Load only python snippets
-require("luasnip.loaders.from_vscode").load({ include = { "typescript" } }) -- Load only python snippets
-require("luasnip.loaders.from_vscode").load({ include = { "javascript" } }) -- Load only python snippets
+--[[ require("luasnip.loaders.from_vscode").load({ include = { "python" } }) -- Load only python snippets
+require("luasnip.loaders.from_vscode").load({ include = { "typescript" } }) -- Load only typescript snippets
+require("luasnip.loaders.from_vscode").load({ include = { "javascript" } }) -- Load only javascript snippets
+require("luasnip.loaders.from_vscode").load({ include = { "php" } }) -- Load only php snippets--]]
 
 -- The directories will have to be structured like eg. <https://github.com/rafamadriz/friendly-snippets> (include
 -- a similar `package.json`)

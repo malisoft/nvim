@@ -12,7 +12,7 @@ require("commented").setup({
     codetags_keybindings = {
         --fixme = "<leader>c",
         --fixme_line = "<leader>cc",
-        --todo = "<leader>t",
+        todo = "<leader>t",
         --todo_line = "<leader>tt",
         --bug = "<leader>b",
         --bug_line = "<leader>bb",

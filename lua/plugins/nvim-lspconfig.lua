@@ -81,7 +81,7 @@ use the command ":Mason" to add automaticly
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'pyright', 'html', 'tsserver','tailwindcss', 'intelephense', 'vuels', 'diagnosticls'}
+local servers = { 'bashls', 'pyright', 'html', 'tsserver', 'tailwindcss', 'intelephense', 'vuels', 'diagnosticls'}
 -- Set settings for language servers below
 --
 -- tsserver settings
@@ -102,38 +102,7 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp.tsserver.setup{
-  on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  capabilities = capabilities,
-  ts_settings = ts_settings,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  settings = {
-    documentFormatting = false,
-    documentRangeFormatting = false,
-    codeAction = true,
-    codeLens = false,
-    diagnostics = true,
-    documentHighlight = false,
-    documentSymbol = false,
-    hover = false,
-    references = false,
-    rename = false,
-    signatureHelp = false,
-    workspaceSymbol = false,
-    completion = false,
-    executeCommand = false,
-    workspace = {
-      workspaceFolders = false,
-      configuration = false,
-      didChangeConfiguration = false,
-      didChangeWatchedFiles = false,
-      symbol = false,
-      executeCommand = false,
-      applyEdit = false,
-    },
-  },
 }
 nvim_lsp.tailwindcss.setup{
   settings = {
@@ -270,6 +239,7 @@ local linters = {
   },
 }
 nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
   filetypes = vim.tbl_keys(filetypes),
   init_options = {
     filetypes = filetypes,

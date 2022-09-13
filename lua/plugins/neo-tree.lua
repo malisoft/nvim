@@ -95,8 +95,8 @@ require("neo-tree").setup({
       hide_hidden = false, -- only works on Windows for hidden files/directories
       hide_by_name = {
         ".DS_Store",
-        "thumbs.db"
-        --"node_modules"
+        "thumbs.db",
+        "node_modules"
       },
       never_show = { -- remains hidden even if visible is toggled to true
         --".DS_Store",
