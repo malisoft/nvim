@@ -8,7 +8,6 @@ saga.init_lsp_saga({
       sign = true,
       update_time = 150,
       sign_priority = 20,
-      virtual_text = true,
   },
   -- finder icons
   finder_icons = {

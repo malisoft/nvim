@@ -101,9 +101,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-nvim_lsp.tsserver.setup{
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-}
+nvim_lsp.tsserver.setup{}
 nvim_lsp.tailwindcss.setup{
   settings = {
     tailwindCSS = {
