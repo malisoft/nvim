@@ -74,4 +74,4 @@ map('n', '<leader>k', ':bnext<CR>', default_opts)
 -- Close a Buffer
 map('n', '<leader>e', ':bdelete<CR>', default_opts)
 -- To acept copilot suggestion
-map("i", "<C-f>", "copilot#Accept('<CR>')", { expr = true })
+map("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true })
