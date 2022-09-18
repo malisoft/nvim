@@ -99,7 +99,6 @@ return require('packer').startup(function(use)
       "williamboman/mason-lspconfig.nvim",
   }
   use { 'neovim/nvim-lspconfig' }
-  use { "ray-x/lsp_signature.nvim" }
   use { "glepnir/lspsaga.nvim" }
   use {
     'hrsh7th/nvim-cmp',
