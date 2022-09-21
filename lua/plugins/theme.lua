@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 local opt = vim.opt
-local g = vim.g                       -- global variables
+local g = vim.g -- global variables
 --opt.background = "light"
 g.tmuxline_preset = 'tmux'
 --g.tmuxline_theme = 'bubblegum'
@@ -14,6 +14,14 @@ g.tmuxline_preset = 'tmux'
 --torte
 --ayu
 g.airline_theme = 'ayu_dark'
+g.tmuxline_preset = {
+  a    = '#S',
+  win  = {'#I', '#W'},
+  cwin = {'#I', '#W', '#F'},
+  y    = {'%R', '%a', '%Y'},
+  z    = '#H'
+}
+
 cmd[[colorscheme ayu]]
 
 cmd[[let g:airline#extensions#tabline#enabled = 1]] 

@@ -36,7 +36,8 @@ opt.linebreak = true          -- wrap on word boundary
 opt.conceallevel = 0
 opt.termguicolors = true
 opt.guifont = "JetBrainsMono Nerd Font"
-opt.undodir="~/.nvim/undo/backup"
+vim.o.undodir="~/.nvim/undo/backup"
+--opt.undodir='~/.nvim/undo/backup'
 g.neovide_cursor_vfx_mode = "railgun"
 
 opt.list = true
@@ -63,25 +64,22 @@ opt.synmaxcol = 1000      -- max column for syntax highlight
 -- Tabs, indent
 -----------------------------------------------------------
 opt.expandtab = true      -- use spaces instead of tabs
-opt.shiftwidth = 2        -- shift 4 spaces when tab
-opt.tabstop = 2           -- 1 tab == 4 spaces
+opt.shiftwidth = 2        -- shift 2 spaces when tab
+opt.tabstop = 1           -- 1 tab == 2 spaces
 opt.smartindent = true    -- autoindent new lines
 
 -- don't auto commenting new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- remove line lenght marker for selected filetypes
-cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=0]]
+cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=2]]
+cmd [[autocmd FileType php setlocal cc=4 shiftwidth=4]]
 
 -- 2 spaces for selected filetypes
 -- cmd [[
 --   autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
 -- ]]
 
--- IndentLine
---g.indentLine_setColors = 0  -- set indentLine color
---g.indentLine_char = '|'       -- set indentLine character
------------------------------------------------------------
 -- Terminal
 -----------------------------------------------------------
 -- open a terminal pane on the right using :Term

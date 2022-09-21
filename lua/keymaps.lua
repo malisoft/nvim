@@ -57,7 +57,6 @@ map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", default_opts)
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", default_opts)
 map("n", "gr", "<cmd>Trouble lsp_references<cr>", default_opts)
 map("n", "gi", "<cmd>Trouble lsp_implementation<cr>", default_opts)
-map("n", "<leader>aw", "<cmd>lua vim.lsp.buf.code_action()<CR>", default_opts)
 
 -- Neogen
 -- to generate better annotations ->:Neogen func|class|type|...
