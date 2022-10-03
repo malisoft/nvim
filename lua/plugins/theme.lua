@@ -13,6 +13,8 @@ g.tmuxline_preset = 'tmux'
 --cobalt2 for tmux
 --torte
 --ayu
+--gotham
+cmd[[colorscheme ayu]]
 g.airline_theme = 'ayu_dark'
 g.tmuxline_preset = {
   a    = '#S',
@@ -21,8 +23,6 @@ g.tmuxline_preset = {
   y    = {'%R', '%a', '%Y'},
   z    = '#H'
 }
-
-cmd[[colorscheme ayu]]
 
 cmd[[let g:airline#extensions#tabline#enabled = 1]] 
 cmd[[let g:airline#extensions#tabline#left_sep = '']]

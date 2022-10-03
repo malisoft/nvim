@@ -83,6 +83,7 @@ require("telescope").load_extension("file_browser")
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension('fzy_native')
 require('telescope').load_extension('media_files')
+require('telescope').load_extension('flutter')
 -- Using Lua functions
 local opts = { noremap=true, silent=true }
 local map = vim.api.nvim_set_keymap
@@ -95,4 +96,3 @@ map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', 
 map('n', '<leader>fgb', '<cmd>lua require("telescope.builtin").git_branches()<cr>', opts)
 map('n', '<leader>fgc', '<cmd>lua require("telescope.builtin").git_commits()<cr>', opts)
 map('n', '<leader>fgs', '<cmd>lua require("telescope.builtin").git_status()<cr>', opts)
-map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)

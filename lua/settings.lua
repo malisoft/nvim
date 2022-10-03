@@ -36,8 +36,7 @@ opt.linebreak = true          -- wrap on word boundary
 opt.conceallevel = 0
 opt.termguicolors = true
 opt.guifont = "JetBrainsMono Nerd Font"
-vim.o.undodir="~/.nvim/undo/backup"
---opt.undodir='~/.nvim/undo/backup'
+opt.undodir="~/.nvim/undo/backup"
 g.neovide_cursor_vfx_mode = "railgun"
 
 opt.list = true
@@ -47,8 +46,8 @@ exec([[
   augroup execute
     autocmd FileType javascript map <buffer> <F5> :w<CR>:exec '!gjs' shellescape(@%, 1)<CR>
     autocmd FileType javascript imap <buffer> <F5> <esc>:w<CR>:exec '!gjs' shellescape(@%, 1)<CR>
-    autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
-    autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+    autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+    autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
   augroup END
 ]],false)
 
@@ -72,8 +71,9 @@ opt.smartindent = true    -- autoindent new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- remove line lenght marker for selected filetypes
-cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=2]]
-cmd [[autocmd FileType php setlocal cc=4 shiftwidth=4]]
+cmd [[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=0]]
+cmd [[autocmd FileType vue setlocal shiftwidth=2 tabstop=2]]
+--cmd [[autocmd FileType php setlocal cc=4 shiftwidth=4]]
 
 -- 2 spaces for selected filetypes
 -- cmd [[

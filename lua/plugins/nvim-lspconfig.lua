@@ -42,13 +42,14 @@ local on_attach = function(client, bufnr)
 
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   --buf_set_keymap('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'wf', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', 'wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', 'wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
@@ -172,6 +173,7 @@ local filetypes = {
   typescriptreact = "eslint",
   python = "flake8",
   php = "phpcs",
+  dart = "dartanalyzer",
 }
  
 local linters = {
@@ -235,6 +237,29 @@ local linters = {
       error = "error",
       warning = "warning",
     },
+  },
+  dartanalyzer = {
+    command = "dartanalyzer",
+    debounce = 100,
+    args = {"--machine", "--options", "analysis_options.yaml", "%file"},
+    offsetLine = 0,
+    offsetColumn = 0,
+    sourceName = "dartanalyzer",
+    formatLines = 1,
+    formatPattern = {
+      "^[^:]+:(\\d+):(\\d+):\\s+(.*)\\s+\\[(.*)\\]$",
+      {
+        line = 1,
+        column = 2,
+        message = 3,
+        security = 4
+      }
+    },
+    securities = {
+      error = "error",
+      warning = "warning",
+      info = "info"
+    }
   },
 }
 nvim_lsp.diagnosticls.setup {
