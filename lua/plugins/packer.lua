@@ -60,8 +60,8 @@ return require('packer').startup(function(use)
   }
 
   -- fuzzy finder
-  use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/popup.nvim'
   use {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -81,13 +81,6 @@ return require('packer').startup(function(use)
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
   }
 
   use {
@@ -95,7 +88,10 @@ return require('packer').startup(function(use)
       "williamboman/mason-lspconfig.nvim",
   }
   use { 'neovim/nvim-lspconfig' }
-  use { "glepnir/lspsaga.nvim" }
+  use {
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {

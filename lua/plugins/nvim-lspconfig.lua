@@ -50,8 +50,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
-  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>aw', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('x', '<leader>aw', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -83,7 +83,17 @@ use the command ":Mason" to add automaticly
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'pyright', 'html', 'tsserver', 'tailwindcss', 'intelephense', 'vuels', 'diagnosticls'}
+local servers = { 
+  'bashls',
+  'pyright',
+  'html',
+  'tsserver',
+  'tailwindcss',
+  'intelephense',
+  'vuels',
+  'diagnosticls',
+  'dartls'
+}
 -- Set settings for language servers below
 --
 -- tsserver settings
